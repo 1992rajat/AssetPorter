@@ -1,0 +1,44 @@
+[
+    {
+        "env": "sfmc",
+        "instance_name": "SNHU",
+        "client_Id":"DSFJ23322LK",
+        "client_Secret":""
+},
+{
+        "env": "eloqua",
+        "instance_name": "Deloitte Sandbox",
+        "company_Name":"Deloitte",
+        "client_Id":"",
+        "password":""
+
+},
+{
+        "env": "eloqua",
+        "instance_name": "Amex",
+        "company_Name":"Deloitte",
+        "client_Id":"",
+        "password":""
+
+},
+{
+        "env": "eloqua",
+        "instance_name": "Mercury Sandbox",
+        "company_Name":"Deloitte",
+        "client_Id":"",
+        "password":""
+
+},
+ {
+        "env": "sfmc",
+        "instance_name": "Deloitte",
+        "client_Id":"DSFJ23378LK",
+        "client_Secret":""
+},
+ {
+        "env": "sfmc",
+        "instance_name": "Colgate",
+        "client_Id":"DSFJ23898LK",
+        "client_Secret":""
+}
+]

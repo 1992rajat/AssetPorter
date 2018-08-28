@@ -1,0 +1,194 @@
+<header>
+		<div>
+			<h3 class="header-title">Asset Porter</h3>
+			<p class="header-subtitle">Select Destination Page</p>
+		</div>
+  </header>
+  
+	<div class="container">
+    <h1 class="heading">Select Destination</h1>
+    <div class="registerButton">
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="buttonstyle" data-toggle="modal" data-target="#myModal">Register New Instance</button>
+</div>
+<div class=" clearfix"></div>
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+	
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Insert New Instance</h4>
+					</div>
+				<div class="modal-body">
+					<!--Dropdown-->
+					<div class="box-header with-border">  
+							<div class="form-group voffset row" >  
+								<label for="" class="vertical-label col-sm-4 col-md-8 text-center">  Select Platform</label>  
+								<div class="col-sm-8 col-md-4">  
+									<select class="hideLabel form-control"  [(ngModel)]="selectedValue"  (ngModelChange)="checkInstance(selectedValue)">  
+											<option selected="" value="">--None--</option>  
+									 <!-- <option [ngValue]="selectedValue" *ngFor="let k of nameList">  
+											 {{k.Name}}  
+									  </option>   -->
+									  <option value="eloqua" >  
+											Eloqua
+									 </option> 
+									 <option value="sfmc">   
+											SFMC
+									 </option>
+									 <option value="paradot">   
+											Paradot
+									 </option>
+									 <option value="rawHtml">   
+											RAW HTML
+									 </option>
+								 </select>  
+								</div>  
+							</div>  
+					</div> 
+					<div class="eloqua" *ngIf="selectedValue=='eloqua'">
+						<form #eloquafields="ngForm" (ngSubmit)="addInstance(eloquafields)">
+							<div class="row">
+								
+							<div class="col-sm-12 margin-bottom-5">
+									<label>Instance Name</label>
+									<input type="text" name="instance_name" class="form-control" placeholder ="instance Name" required ngModel />
+								</div>
+								<div class="col-sm-12 margin-bottom-5">
+										<label>Company Name</label>
+										<input type="text" name="companyName" class="form-control" placeholder ="Company Name" required ngModel />
+									</div>
+							<div class="col-sm-12  margin-bottom-5">
+							<label>User Id</label>
+								<input type="text"  name="User Id" class="form-control" placeholder ="User ID" required ngModel/>
+							</div>
+							<div class="col-sm-12  margin-bottom-5">
+							<label>Password</label>
+							<input type="password"  name="password" class="form-control"  placeholder ="password" required ngModel/>
+						</div>
+						</div>
+						<div class="add-button">
+							<button type="submit" class="buttonstyle" [disabled]="!eloquafields.valid" name="action"  >Add Instance</button>
+						</div> 
+						</form>	
+						</div>
+						<div class="sfmc" *ngIf="selectedValue=='sfmc'" >
+							<form #sfmcfields="ngForm" (ngSubmit)="addInstance(sfmcfields)">
+								<label>Instnace Name</label>
+								<input type="text" name="instance_name" class="form-control" placeholder="client Id" ngModel/>
+								<label>Client ID</label>
+								<input type="text" name="clientId" class="form-control" placeholder="client Id" ngModel/>
+								<label>Client Secret ID</label>
+								<input type="text" name="clientsecretId" class="form-control" placeholder="client secret Id" ngModel />
+								<div class="add-button">
+									<button class="buttonstyle" [disabled]="!sfmcfields.valid" name="action" >Add Instance</button>
+							</div>
+							</form>
+						</div>
+					<!--dropdown ends-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal" id="closebutton">Close</button>
+				</div>
+				</div>
+	
+			</div>
+			</div><!--Modal ends-->
+	
+			<div class="row card-container">
+					<div class="col-sm-6">
+						<div class="first-container">
+							<label> 
+							<input type="checkbox">
+							<div class="card">
+								<div class="front"><!--ELOQUA--><img [src]="eloqualogo"/></div>
+								<div class="back">
+							<h4>Eloqua</h4>
+							<ul>
+								<li *ngFor="let item of eloquaList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+							</ul>
+						</div>
+							</div>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6 clearfix">
+					<div class="second-container">
+							<label> 
+							<input type="checkbox">
+							<div class="card">
+								<div class="front"><!--SFMC--><img [src]="sfmclogo"/></div>
+								<div class="back">
+							<h4>SFMC</h4>
+							<ul>
+								<li *ngFor="let item of sfmcList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+							</ul>
+							</div>
+							</div>
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-6 clearfix">
+						<div class="third-container">
+								<label> 
+								<input type="checkbox">
+								<div class="card">
+									<div class="front"><!--PARADOT--><img [src]="paradotlogo"/></div>
+									<div class="back">
+								<h4>Paradot</h4>
+								<ul>
+									<li *ngFor="let item of paradotList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+								</ul>
+								</div>
+								</div>
+								</label>
+							</div>
+						</div>
+						
+						<div class="col-sm-6 clearfix">	
+							<div class="fourth-container">
+									<label> 
+											<input type="checkbox">
+											<div class="card">
+												<div class="front"><!--HTML--><img [src]="htmllogo"/></div>
+												<div class="back">
+											<h4>Html</h4>
+											<ul>
+													<li *ngFor="let item of htmlList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+											</ul>
+											</div>
+											</div>
+											</label>
+									
+								</div>
+							</div>
+						<!--		<div class="fifth-container">
+										<label> 
+									<input type="checkbox">
+									<div class="card">
+										<div class="front">MARKETO</div>
+										<div class="back">
+									<h4>Marketo</h4>
+									<ul>
+											<li *ngFor="let item of marketoList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+									</ul>
+									</div>
+									</div>
+									</label>
+									</div>-->
+									
+								</div>
+							<div class="text-right">
+									<div class=" previous-button inline-Block">
+											<a routerLink="/source"><button class="buttonstyle">Previous</button></a>
+								</div>
+									<div class=" next-button inline-Block ">
+											<a routerLink="/comprehensive"><button class="buttonstyle" [disabled]="isDisabled" >Select Asset</button></a>
+								</div>
+							</div>
+				</div>
+		
+		

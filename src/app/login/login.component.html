@@ -1,0 +1,45 @@
+	<div class="row">
+
+		<div class="left-login-container col-sm-8 hidden-xs">
+			<div class="img-container">
+					<img [src]="logo" class="logo">
+			</div>	
+				<div class="content">	
+					<div class="asset-logo-container">
+							<img [src]="assetlogo" alt="Avatar" class="avatar">
+					</div> 
+				<!-- <h1 class="tool-title">Asset Porter</h1> -->
+				<div class="tool-description"><p class="tool-description-heading"> Having difficulty in migrating assets?</p> <p class="tool-description-content" >Here is the easy way...Migrate Emails & Landing Pages from Sandbox to Production or from one Marketing instance to another with just a few clicks !!</p></div>
+			</div>
+		</div>
+		<div class="right-login-container col-sm-4">
+			<div>
+				<h2 class="text-center">Login</h2>
+				<form #loginForm="ngForm" action="/action_page.php" (ngSubmit)="login(loginForm)">
+				  
+				  <div class="form-container">
+				    <label for="ID"><b>ID</b></label>
+				    <input type="text" placeholder="Enter ID" name="loginid" ngModel  required>
+
+				    <label for="password"><b>Password</b></label>
+				    <input type="password" placeholder="Enter Password" name="psw" ngModel required pattern>
+				       
+				     <div class="row center">
+				     		<div class="col-sm-4">
+									 <button type="submit" class="buttonstyle" [disabled]="!loginForm.valid" name="action">Login</button>
+									 <span>{{errorMsg}}</span>
+								 </div>
+								 
+				     		<div class="col-sm-4">
+				     			<button type="button" class="buttonstyle">Sign Up</button>
+				     		</div>
+				     </div>   
+				  </div>
+
+				  <div class="form-container">
+				    <p class="psw"><a href="javascript:void(0)">Forgot password?</a></p>
+				  </div>
+				</form>
+			</div>
+		</div>
+	</div>

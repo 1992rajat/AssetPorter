@@ -1,0 +1,140 @@
+body {
+    font-family: Lato, sans-serif !important;
+}
+header{
+    width:100%;
+    background-color:#000000;
+    height:70px;
+}
+.header-title{
+color:#ffffff;
+font-family: 'Lato',sans-serif;
+-webkit-margin-before: 0 !important;
+-webkit-margin-after: 0 !important;
+ padding: 15px 15px 2px 15px;
+}
+.heading{
+font-family: 'Lato',sans-serif;
+}
+.header-subtitle{
+color:#86BC25;
+font-size: 12px;
+padding:0 0 10px 15px;
+}
+* {box-sizing: border-box}
+.comprehensive-container{
+    font-family: 'Lato',sans-serif;
+}
+/* Style the tab */
+.tab {
+float: left;
+border-top: 1px solid #86BC25;
+background-color: #000000;
+width: 30%;
+height: 320px;
+}
+.inline-Block{
+    display: inline-block;
+}
+.previous-button{
+    margin:0 0 0 20%;
+}
+/* Style the buttons inside the tab */
+.tab button {
+display: block;
+background-color: inherit;
+color: #fff;
+padding: 22px 16px;
+width: 100%;
+border: none;
+outline: none;
+text-align: left;
+cursor: pointer;
+transition: 0.3s;
+font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+background-color: #fff;
+color:#000000;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+background-color: #fff;
+color:#000000;
+}
+
+/* Style the tab content */
+.tabcontent {
+float: left;
+padding: 0px 12px;
+border: 1px solid #ccc;
+width: 70%;
+border-left: none;
+height: 320px;
+}
+button,registerButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+}
+.registerButton{
+    float:right;
+    margin-right:7%;
+}
+.buttonstyle {
+    padding: 10px 18px;
+    background-color: #86BC25;
+}
+.deploy-container{
+    margin-top:40px;
+}
+.deploy-container input[type=file] {
+    /* display:none; */
+}
+.deploy-button{
+    display: inline-block;
+}
+.custom-file-upload {
+    color:#ffffff;
+    background-color: #86BC25;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    /* margin-right: 10%; */
+    margin-top: 40px;
+    position: relative;
+    left:6.5%;
+    }
+/*spinner style start*/
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #86bc25;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  .shim{
+      background-color:#ffffff;
+      opacity:0.1;
+  }
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+/*spinner style end*/

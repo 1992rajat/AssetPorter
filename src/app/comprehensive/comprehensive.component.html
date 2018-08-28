@@ -1,0 +1,120 @@
+<div class="loader" *ngIf="isVisible"></div>
+<div class="comprehensive-container">
+  <div>
+  <header>
+      <div>
+        <h3 class="header-title">Asset Porter</h3>
+        <p class="header-subtitle">Select Asset Page</p>
+      </div>
+    </header>
+  </div>
+  <div >
+    <div class="tab">
+        <button class="tablinks" [ngClass]="{'active':activeTab=='email'}" (click)="activeTab='email'" *ngIf="!isEmailVisible" >Email</button>
+        <button class="tablinks" [ngClass]="{'active':activeTab=='landingpage'}" (click)="activeTab='landingpage'" *ngIf="!islandingPageVisible">Landing Page</button>
+      </div>
+    
+      <div id="Eloqua" class="tabcontent" *ngIf="activeTab=='email' && !isEmailVisible">
+        <h3>Email</h3>
+        <div class="registerButton clearfix">
+            <button  class="buttonstyle"><a [href]="downloadpath">Download Template</a></button>
+        </div>
+        <div *ngIf="eloquaEmails">
+        <p>
+            <strong>
+              Email Workbook
+            </strong>
+          </p>
+          <ul>
+            <li>
+              Email workbook name should be 'Email Details' with xlsx extension.
+            </li>
+            <li>
+              Workbook contains 4 sheets:
+              <ul>
+                <li>
+                  <strong>
+                    Email Headers:
+                  </strong>
+                  Row 1 contains column label ie source Header Id, Header Name and New Folder Id. Actual data begins from row 2.
+                </li>
+                <li>
+                  <strong>
+                    Email Footers:
+                  </strong>
+                  Row 1 contains column label ie source Footer Id, Footer Name and New Folder Id. Actual data begins from row 2.
+                </li>
+                <li>
+                  <strong>
+                    Email Groups:
+                  </strong>
+                  Row 1 contains column label ie source Group Id and Group Name. Actual data begins from row 2.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+          <div *ngIf="sfmcEmails">
+              <!-- <strong>
+                  Email Workbook
+                </strong>
+                <p>
+                  <strong>
+                    Emails:
+                  </strong>
+                  &nbsp;row 1 contains column label ie source Email Id, Email Name and New Folder Id. Actual data begins from row 2.
+                </p> -->
+                <ul>
+                    <li>
+                        Email workbook name should be 'Email Detail Eloqua To MC' with xlsx extension.
+                      </li>
+                      <li>
+                        Workbook contains 1 sheet:
+                        <ul>
+                    <li><strong>Emails:&nbsp;</strong>row 1 contains column label ie source Email Id and Email Name. Actual data begins from row 2.<br /> </li>
+                    </ul>
+                    </li>
+                    </ul>
+        </div>
+      </div>
+  
+      <div id="sfmc" class="tabcontent" *ngIf="activeTab=='landingpage'&& !islandingPageVisible">
+        <h3>Landing Page</h3>
+        <div class="registerButton clearfix">
+            <button class="buttonstyle"><a href="./assets/files/Landing Page.xlsx">Download Template</a></button>
+        </div>
+        <ul>
+            <li>
+                Landing Page workbook name should be 'Landing Page' with xlsx extension.
+              </li>
+              <li>
+                Workbook contains 1 sheet:
+                <ul>
+            <li><strong>LandingPages:&nbsp;</strong>Row 1 contains column label ie&nbsp; source Landing Page Id and Landing Page name. Actual data begins from row 2.<br /> </li>
+            </ul>
+            </li>
+            </ul>
+            <!-- <p><strong>Email Workbook(Eloqua to SFMC)</strong></p>
+            <ul>
+            <li><strong>Emails:&nbsp;</strong>row 1 contains column label ie&nbsp; source Email Id and Email Name. Actual data begins from row 2.</li>
+            </ul> -->
+      </div>
+</div>
+<div class="deploy-container">
+    <div class=" previous-button inline-Block">
+    <a routerLink="/destination"><button class="buttonstyle">Previous</button></a>
+    </div>
+    <!-- <label class="custom-file-upload inline-Block">
+    <input type="file" name="excel" accept=".xlsx">
+    Choose File
+    </label> -->
+    <button type="button" class="custom-file-upload inline-Block" (click)="chooseFile()">Choose File</button>
+    <div class="inline-Block" >
+    <input type="file" name="excel" accept=".xlsx" id="button-click">
+    </div>
+    <div class="deploy-button inline-Block">
+    <button class="buttonstyle" (click)="showSpinner()" >Deploy</button>
+    </div>
+    </div> 
+    
+</div>   
