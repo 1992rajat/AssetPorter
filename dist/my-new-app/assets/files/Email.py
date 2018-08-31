@@ -5,8 +5,8 @@ import xlrd
 from collections import OrderedDict
 import xlwt
 
-GCPAuthorization='Basic ZGVsb2l0dGVzYW5kYm94XHJhamF0LmJoYXdzYXI6RGVsb2l0dGUuMQ=='
-JAPAuthorization='Basic ZGVsb2l0dGVtZXJjdXJ5dGVzdFxzd2F0aS5taXNocmE6U01zeTMxIUA='
+GCPAuthorization='Basic RGVsb2l0dGVTYW5kYm94XFJhamF0LkJoYXdzYXI6RGVsb2l0dGUuMQ=='
+JAPAuthorization='Basic QW1lcmljYW5FeHByZXNzQXVzdHJhbGlhXEJyYXRhdGkuRGFzOkRlbG9pdHRlLjE='
 book = xlwt.Workbook()
 book1 = xlwt.Workbook()
 headerSheetname = "Email Headers"
@@ -232,15 +232,15 @@ for curr_row in range(1, num_rows, 1):
         print 'excel read email '+emailId
         print 'Creating emails  ' + eamilWorksheet.cell_value(curr_row,1 )
         print 'url' +"https://secure.p01.eloqua.com/api/REST/1.0/assets/email/"+emailId
-        emailResponse=requests.get("https://secure.p04.eloqua.com/api/REST/1.0/assets/email/"+emailId,headers = {
+        emailResponse=requests.get("https://secure.p01.eloqua.com/api/REST/1.0/assets/email/"+emailId,headers = {
         'authorization': JAPAuthorization,
         'content-type': "application/json"
         });
         oldEmailId=emailId
         print 'fetching email details'
-        email= json.loads(emailResponse.text.encode('utf-8').strip())
+        email= json.loads(emailResponse.text)
         emailData = OrderedDict()
-        print 'details '+emailResponse.text.encode('utf-8').strip()
+        print 'details '+emailResponse.text
         emailData['name']=email['name']
         emailData['folderId']= (str(eamilWorksheet.cell_value(curr_row,2 ))).replace('.0','')
         print '1'
@@ -330,9 +330,9 @@ for curr_row in range(1, num_rows, 1):
             'postman-token': "228ab48f-5eef-36fb-a1f1-abe79aeae24c"
         }
         newEmailResponse = requests.request("POST", url, data=payload, headers=headers)
-        print json.loads(newEmailResponse.text.encode('utf-8').strip())
-        print 'email response '+ newEmailResponse.text.encode('utf-8').strip()
-        newEmail= json.loads(newEmailResponse.text.encode('utf-8').strip())
+        print json.loads(newEmailResponse.text)
+        print 'email response '+ newEmailResponse.text
+        newEmail= json.loads(newEmailResponse.text)
         newEmailId=newEmail['id']
         #print 'newaskdsljkdf'+newGroup['id']
         print 'oldEmailId'+oldEmailId
@@ -382,7 +382,7 @@ for k, v in emailDict1.items():
     shEmail.write(n, 3, 'Complete')
     n=n+1
 
-book1.save("Email Report1")
+book1.save("Email Report")
 
 
 

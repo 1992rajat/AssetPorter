@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewEncapsulation  } from '@angular/core';
 import { Response } from '@angular/http/src/static_response';
-import {InstanceService} from '/Users/rbhawsar/Documents/my-new-app 2/src/assets/services/instance.service';
+import {InstanceService} from '../../assets/services/instance.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 

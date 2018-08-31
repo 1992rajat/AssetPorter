@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {InstanceService} from '/Users/rbhawsar/Documents/my-new-app 2/src/assets/services/instance.service';
+import {InstanceService} from '../../assets/services/instance.service';
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',

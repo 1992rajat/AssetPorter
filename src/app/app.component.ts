@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Http , Response } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from '/Users/rbhawsar/Documents/my-new-app 2/src/app/login/login.component';
+import {LoginComponent} from '../app/login/login.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 

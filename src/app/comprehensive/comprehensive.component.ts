@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild,ElementRef} from '@angular/core';
-import {InstanceService} from '/Users/rbhawsar/Documents/my-new-app 2/src/assets/services/instance.service';
+import {InstanceService} from '../../assets/services/instance.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';

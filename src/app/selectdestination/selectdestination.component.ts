@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
-import {InstanceService} from '/Users/rbhawsar/Documents/my-new-app 2/src/assets/services/instance.service'
+import {InstanceService} from '../../assets/services/instance.service'
 @Component({
   selector: 'app-selectdestination',
   templateUrl: './selectdestination.component.html',

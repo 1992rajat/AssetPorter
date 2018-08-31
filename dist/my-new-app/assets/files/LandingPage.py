@@ -6,8 +6,8 @@ from collections import OrderedDict
 import xlwt
 
 
-GCPAuthorization='Basic ZGVsb2l0dGVzYW5kYm94XHJhamF0LmJoYXdzYXI6RGVsb2l0dGUuMQ=='
-JAPAuthorization='Basic ZGVsb2l0dGVtZXJjdXJ5dGVzdFxzd2F0aS5taXNocmE6U01zeTMxIUA='
+GCPAuthorization='Basic RGVsb2l0dGVTYW5kYm94XFJhamF0LkJoYXdzYXI6RGVsb2l0dGUuMQ=='
+JAPAuthorization='Basic QW1lcmljYW5FeHByZXNzQXVzdHJhbGlhXEJyYXRhdGkuRGFzOkRlbG9pdHRlLjE='
 book = xlwt.Workbook()
 landingPageSheetname = "LandingPages"
 workbook = xlrd.open_workbook("Landing Page.xlsx")
@@ -24,14 +24,14 @@ for curr_row in range(1, num_rows, 1):
         print landingPageId
         print 'Creating ' + landingPageWorksheet.cell_value(curr_row,1 )
         print 'url' +"https://secure.p01.eloqua.com/api/REST/2.0/assets/landingPage/"+landingPageId
-        landingPageResponse=requests.get("https://secure.p04.eloqua.com/api/REST/2.0/assets/landingPage/"+landingPageId,headers = {
+        landingPageResponse=requests.get("https://secure.p01.eloqua.com/api/REST/2.0/assets/landingPage/"+landingPageId,headers = {
         'authorization': JAPAuthorization,
         'content-type': "application/json"
         });
         print 'landingPage called'
-        landingPage= json.loads(landingPageResponse.text.encode('utf-8').strip())
+        landingPage= json.loads(landingPageResponse.text)
         print '2'
-        print 'helo'+landingPageResponse.text.encode('utf-8').strip()
+        print 'helo'+landingPageResponse.text
         #Creating map for email Headers mapping for oldId and newID
         landingPageData = OrderedDict()
         oldLandingPageId=landingPage['id']
@@ -58,8 +58,8 @@ for curr_row in range(1, num_rows, 1):
         }
         print '4'
         newLandingPageResponse = requests.request("POST", url, data=payload, headers=headers)
-        print 'landingPage response '+ newLandingPageResponse.text.encode('utf-8').strip()
-        newLandingPage= json.loads(newLandingPageResponse.text.encode('utf-8').strip())
+        print 'landingPage response '+ newLandingPageResponse.text
+        newLandingPage= json.loads(newLandingPageResponse.text)
         newLandingPageId=newLandingPage['id']
         print 'newaskdsljkdf'+newLandingPage['id']
         landingPagesDict[str(oldLandingPageId)]=str(newLandingPageId)
@@ -92,6 +92,6 @@ for k, v in landingPagesDict1.items():
     shHeader.write(n, 3, 'Complete')
     n=n+1
 
-book.save("Landing Page Report1")
+book.save("Landing Page Report")
 
 

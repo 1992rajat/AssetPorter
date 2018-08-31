@@ -10,7 +10,7 @@ import { ComprehensiveComponent } from './comprehensive/comprehensive.component'
 import { SummaryComponent } from './summary/summary.component';
 import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
-import {InstanceService} from '/Users/rbhawsar/Documents/my-new-app 2/src/assets/services/instance.service'
+import {InstanceService} from '../assets/services/instance.service'
 
 const appRoutes :Routes =[
   { path: 'login', component: LoginComponent },
