@@ -20,15 +20,15 @@ export class SelectsourceComponent implements OnInit {
     nameId:string;
     selectedItem="";
     selectedsfmcItem="";
-    constructor (private httpService: HttpClient,public instanceService: InstanceService) { }
+    constructor (public httpService: HttpClient,public instanceService: InstanceService) { }
     public arrInstance: string [];
     eloquaList:any = [];
     sfmcList:any =[];
-    private eloqualogo = "./assets/images/eloqua.png";
-    private sfmclogo="./assets/images/Sfmc_edited.png";
-    private paradotlogo="./assets/images/pardot.png";
-    private marketologo="./assets/images/marketo-logo.png";
-    private htmllogo="./assets/images/html.png"
+    public eloqualogo = "./assets/images/eloqua.png";
+    public sfmclogo="./assets/images/Sfmc_edited.png";
+    public paradotlogo="./assets/images/pardot.png";
+    public marketologo="./assets/images/marketo-logo.png";
+    public htmllogo="./assets/images/html.png"
     public selectedsourcevalue;
     public env;
     public newInstancevalue;

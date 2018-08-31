@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
   // providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
-  private logo ="./assets/images/ddlogo@2x.png";
-  private assetlogo="./assets/images/asset-porter_logo3_trimmed.png";
+  public logo ="./assets/images/ddlogo@2x.png";
+  public assetlogo="./assets/images/asset-porter_logo3_trimmed.png";
      ngOnInit() {
   }
 
 
-  constructor(    private  router :Router){}
+  constructor(public  router :Router){}
    
 
       // private ID;

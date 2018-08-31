@@ -10,18 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+// import {LoginService, User} from 'C:/my-new-app/src/assets/services/Login.service'
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(router) {
+        this.router = router;
+        this.logo = "./assets/images/ddlogo@2x.png";
+        this.assetlogo = "./assets/images/asset-porter_logo3_trimmed.png";
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    // private ID;
+    // private password;
+    LoginComponent.prototype.login = function (loginForm) {
+        console.log(loginForm.value);
+        if (loginForm.value.loginid == "rbhawsar@deloitte.com" && loginForm.value.psw == "1234") {
+            this.router.navigate(["source"]);
+        }
+        else {
+            alert("Login failed");
+        }
     };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'app-login',
             templateUrl: './login.component.html',
-            styleUrls: ['./login.component.css']
+            styleUrls: ['./login.component.css'],
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

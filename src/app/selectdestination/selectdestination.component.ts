@@ -22,6 +22,7 @@ export class SelectdestinationComponent implements OnInit {
     arrInstance: string [];
     eloquaList:any = [];
     sfmcList:any =[];
+    paradotList:any=[];
     public selecteddestinationvalue;
     public env;
     public newInstancevalue;
@@ -37,6 +38,7 @@ export class SelectdestinationComponent implements OnInit {
         data => {
           this.eloquaList = (data as any[]).filter(item => item.env=='eloqua');	 // FILL THE ARRAY WITH DATA.
           this.sfmcList = (data as any[]).filter(item => item.env=='sfmc');
+          this.paradotList = (data as any[]).filter(item => item.env=='pardot');
         },
         (err: HttpErrorResponse) => {
           console.log (err.message);

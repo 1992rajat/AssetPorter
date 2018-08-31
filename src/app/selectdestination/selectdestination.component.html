@@ -157,7 +157,7 @@
 												<div class="back">
 											<h4>Html</h4>
 											<ul>
-													<li *ngFor="let item of htmlList" [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
+													<li  [ngClass]="{'active': selectedItem.instance_name==item.instance_name && selectedItem.env == item.env}"><a href="javascript:void(0)" (click)="enable($event,item)">{{item.instance_name}}</a></li>
 											</ul>
 											</div>
 											</div>

@@ -8,9 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./login/login.component");
 var selectsource_component_1 = require("./selectsource/selectsource.component");
+var selectdestination_component_1 = require("./selectdestination/selectdestination.component");
+var comprehensive_component_1 = require("./comprehensive/comprehensive.component");
+var summary_component_1 = require("./summary/summary.component");
+var forms_1 = require("@angular/forms");
+var http_2 = require("@angular/common/http");
+var instance_service_1 = require("../assets/services/instance.service");
+var appRoutes = [
+    { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'source', component: selectsource_component_1.SelectsourceComponent },
+    { path: 'destination', component: selectdestination_component_1.SelectdestinationComponent },
+    { path: 'comprehensive', component: comprehensive_component_1.ComprehensiveComponent },
+    { path: 'summary', component: summary_component_1.SummaryComponent },
+    { path: '', component: login_component_1.LoginComponent }
+];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -19,13 +35,16 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 login_component_1.LoginComponent,
-                selectsource_component_1.SelectsourceComponent
+                selectsource_component_1.SelectsourceComponent,
+                selectdestination_component_1.SelectdestinationComponent,
+                comprehensive_component_1.ComprehensiveComponent,
+                summary_component_1.SummaryComponent
             ],
             imports: [
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule, http_1.HttpModule, http_2.HttpClientModule, router_1.RouterModule.forRoot(appRoutes), forms_1.FormsModule
             ],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            providers: [instance_service_1.InstanceService],
+            bootstrap: [app_component_1.AppComponent],
         })
     ], AppModule);
     return AppModule;
