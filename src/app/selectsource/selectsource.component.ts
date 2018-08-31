@@ -24,6 +24,8 @@ export class SelectsourceComponent implements OnInit {
     public arrInstance: string [];
     eloquaList:any = [];
     sfmcList:any =[];
+    paradotList:any[];
+    htmlList:any[];
     public eloqualogo = "./assets/images/eloqua.png";
     public sfmclogo="./assets/images/Sfmc_edited.png";
     public paradotlogo="./assets/images/pardot.png";
@@ -41,6 +43,8 @@ export class SelectsourceComponent implements OnInit {
           this.arrInstance = (data as string[]);
           this.eloquaList = (data as any[]).filter(item => item.env=='eloqua');	 // FILL THE ARRAY WITH DATA.
           this.sfmcList = (data as any[]).filter(item => item.env=='sfmc');
+          this.paradotList =(data as any[]).filter(item => item.env=='sfmc');
+          this.htmlList = (data as any[]).filter(item => item.env=='sfmc');
         },
         (err: HttpErrorResponse) => {
           console.log (err.message);
