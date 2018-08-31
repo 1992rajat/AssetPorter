@@ -18,19 +18,19 @@ export class SelectdestinationComponent implements OnInit {
     nameId:string;
     selectedItem="";
     selectedsfmcItem="";
-    constructor (private httpService: HttpClient,public instanceService: InstanceService) { }
+    constructor (public httpService: HttpClient,public instanceService: InstanceService) { }
     arrInstance: string [];
     eloquaList:any = [];
     sfmcList:any =[];
     public selecteddestinationvalue;
     public env;
     public newInstancevalue;
-    selectedValue="";
-    private eloqualogo = "./assets/images/eloqua.png";
-    private sfmclogo="./assets/images/Sfmc_edited.png";
-    private paradotlogo="./assets/images/pardot.png";
-    private marketologo="./assets/images/marketo-logo.png";
-    private htmllogo="./assets/images/html.png"
+    public selectedValue="";
+    public eloqualogo = "./assets/images/eloqua.png";
+    public sfmclogo="./assets/images/Sfmc_edited.png";
+    public paradotlogo="./assets/images/pardot.png";
+    public marketologo="./assets/images/marketo-logo.png";
+    public htmllogo="./assets/images/html.png"
     ngOnInit () {
      
       this.httpService.get('./assets/services/instance.json').subscribe(
@@ -85,11 +85,8 @@ export class SelectdestinationComponent implements OnInit {
   {
   //alert(this.nameId);
   }  
-  checkInstance(value,selected){
+  checkInstance(value){
     console.log(value);
-    selected=value;
-    console.log(selected);
-    
-   
+    this.selectedValue=value;
   }
 }
