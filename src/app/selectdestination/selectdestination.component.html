@@ -28,7 +28,7 @@
 							<div class="form-group voffset row" >  
 								<label for="" class="vertical-label col-sm-4 col-md-8 text-center">  Select Platform</label>  
 								<div class="col-sm-8 col-md-4">  
-									<select class="hideLabel form-control"  [(ngModel)]="selectedValue"  (ngModelChange)="checkInstance(selectedValue)">  
+									<select class="hideLabel form-control"  [(ngModel)]="selectedValue"  (ngModelChange)="checkInstance(selectedValue,selectedValue)">  
 											<option selected="" value="">--None--</option>  
 									 <!-- <option [ngValue]="selectedValue" *ngFor="let k of nameList">  
 											 {{k.Name}}  
