@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -7,6 +7,7 @@ import {InstanceService} from '../../assets/services/instance.service'
   selector: 'app-selectdestination',
   templateUrl: './selectdestination.component.html',
   styleUrls: ['./selectdestination.component.css'],
+  encapsulation: ViewEncapsulation.None 
   })
 export class SelectdestinationComponent implements OnInit {
   // items=["fffd","hjgj","hfhj"];
@@ -19,19 +20,20 @@ export class SelectdestinationComponent implements OnInit {
     selectedItem="";
     selectedsfmcItem="";
     constructor (public httpService: HttpClient,public instanceService: InstanceService) { }
-    arrInstance: string [];
+    public arrInstance: string [];
     eloquaList:any = [];
     sfmcList:any =[];
     paradotList:any=[];
     public selecteddestinationvalue;
     public env;
     public newInstancevalue;
-    public selectedValue="";
+     selectedValue="";
     public eloqualogo = "./assets/images/eloqua.png";
     public sfmclogo="./assets/images/Sfmc_edited.png";
     public paradotlogo="./assets/images/pardot.png";
     public marketologo="./assets/images/marketo-logo.png";
-    public htmllogo="./assets/images/html.png"
+    public htmllogo="./assets/images/html.png";
+  
     ngOnInit () {
      
       this.httpService.get('./assets/services/instance.json').subscribe(
