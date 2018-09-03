@@ -87,8 +87,9 @@ export class SelectdestinationComponent implements OnInit {
   {
   //alert(this.nameId);
   }  
-  checkInstance(value){
+  checkInstance(value,selected){
     console.log(value);
-    this.selectedValue=value;
+    selected=value;
+    console.log(selected);
   }
 }

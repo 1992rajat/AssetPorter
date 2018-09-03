@@ -497,9 +497,10 @@ var SelectdestinationComponent = /** @class */ (function () {
     SelectdestinationComponent.prototype.selectName = function () {
         //alert(this.nameId);
     };
-    SelectdestinationComponent.prototype.checkInstance = function (value) {
+    SelectdestinationComponent.prototype.checkInstance = function (value, selected) {
         console.log(value);
-        this.selectedValue = value;
+        selected = value;
+        console.log(selected);
     };
     SelectdestinationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
