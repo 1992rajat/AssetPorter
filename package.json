@@ -2,14 +2,13 @@
   "name": "my-new-app",
   "version": "0.0.0",
   "scripts": {
-    "postinstall":"ng build --aot --prod",
+    "postinstall": "ng build --aot --prod",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "ng lint",
     "e2e": "ng e2e"
-    
   },
   "private": true,
   "dependencies": {
@@ -29,13 +28,12 @@
     "python-shell": "^0.5.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26",
-    "express-history-api-fallback":"^2.2.1",
-    "express":"latest"
+    "express-history-api-fallback": "^2.2.1",
+    "express": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.1",
     "typescript": "~2.7.2",
-   
     "@angular/language-service": "^6.0.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
@@ -51,10 +49,9 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
-
   },
   "engines": {
-    "node":"latest",
-    "npm":"3.10.10"
-    } 
+    "node": "latest",
+    "npm": "3.10.10"
+  }
 }
