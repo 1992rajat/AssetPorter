@@ -23,12 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/login.component.css",
-              "src/selectsource.component.css",
-              "src/selectdestination.component.css",
-              "src/comprehensive.component.css",
-              "src/summary.component.css"
+              "src/styles.css"
+              
             ],
             "scripts": []
           },
