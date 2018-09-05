@@ -52,101 +52,13 @@ export class ComprehensiveComponent implements OnInit {
         document.getElementById("button-click").click();
         } 
   
-        saveFile(event :Event){
-          this.chosenFile=(<HTMLInputElement>event.target).files[0];
-        }
-        submitFile() {
-          alert("hi");
-          const uploadForm = new FormData();
-          uploadForm.append("file", this.chosenFile);
-          uploadForm.append("asset-type", this.activeTab);
-          uploadForm.append("src", this.instanceService.getserviceSourceData());
-          uploadForm.append("dest", this.instanceService.getserviceDestinationData());
-         
-          this.httpService.post("/uploadFile", uploadForm).subscribe(
-            data => {
-              alert("2");
-              //this.isVisible = false;
-             // this.router.navigateByUrl('/summary');
-             this.callPythonScript();
-
-            },
-            (err: HttpErrorResponse) => {
-              alert("3");
-              console.log('error')
-              console.log(err.message);
-            }
-          );
-        }
+       
           showSpinner(){
             this.isVisible=true;
             this.submitFile();
-            // setTimeout(function() {
-             
-            // var clickedtab=this.activeTab
-            // console.log(clickedtab);
-            // this.router.navigateByUrl('/summary');
-            // }, 6000);
-           
+                    
          
             }
 
 
 
-
-  callPythonScript(){
-    var clickedTab=this.activeTab
-      console.log(clickedTab);
-      this.instanceService.setActiveTabData(clickedTab);
-      if(this.instanceService.getserviceDestinationData().env =="eloqua" && this.instanceService.getActiveTabdata()=="email" ){
-        //alert('email eloqua');
-        this.httpService.get('/eloquaEmail').subscribe(
-          data => {
-            this.isVisible=false;
-            this.router.navigateByUrl('/summary');
-          },
-          (err: HttpErrorResponse) => {
-          console.log (err.message);
-          }
-          ); 
-      }
-      else if(this.instanceService.getserviceDestinationData().env =="sfmc" && this.instanceService.getActiveTabdata()=="email" ){
-        //alert('sfmc email');
-        this.httpService.get('/sfmcEmail').subscribe(
-          
-          data => {
-            this.isVisible=false;
-            this.router.navigateByUrl('/summary');
-          },
-          (err: HttpErrorResponse) => {
-          console.log (err.message);
-          }
-          ); 
-      }
-      else{
-        //alert('landing page email');
-        this.httpService.get('/eloquaLandingPage').subscribe(
-          data => {
-            this.isVisible=false;
-            this.router.navigateByUrl('/summary');
-          },
-          (err: HttpErrorResponse) => {
-          console.log (err.message);
-          }
-          ); 
-      }
-      
-      
-      /*  
-      setTimeout(()=>{    //<<<---    using ()=> syntax
-        console.log("hi") 
-        this.isVisible=false;
-        this.router.navigateByUrl('/summary');
-   },20000);
-     
-    */
-    
-
-    }
-
-}
