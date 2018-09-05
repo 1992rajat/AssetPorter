@@ -52,7 +52,32 @@ export class ComprehensiveComponent implements OnInit {
         document.getElementById("button-click").click();
         } 
   
-       
+        saveFile(event :Event){
+          this.chosenFile=(<HTMLInputElement>event.target).files[0];
+        }
+        submitFile() {
+          alert("hi");
+          const uploadForm = new FormData();
+          uploadForm.append("file", this.chosenFile);
+          uploadForm.append("asset-type", this.activeTab);
+          uploadForm.append("src", this.instanceService.getserviceSourceData());
+          uploadForm.append("dest", this.instanceService.getserviceDestinationData());
+         
+          this.httpService.post("/uploadFile", uploadForm).subscribe(
+            data => {
+              alert("2");
+              //this.isVisible = false;
+             // this.router.navigateByUrl('/summary');
+             this.callPythonScript();
+
+            },
+            (err: HttpErrorResponse) => {
+              alert("3");
+              console.log('error')
+              console.log(err.message);
+            }
+          );
+        }
           showSpinner(){
             this.isVisible=true;
             this.submitFile();
