@@ -85,5 +85,45 @@ export class ComprehensiveComponent implements OnInit {
          
             }
 
-
+callPythonScript(){
+    var clickedTab=this.activeTab
+      console.log(clickedTab);
+      this.instanceService.setActiveTabData(clickedTab);
+      if(this.instanceService.getserviceDestinationData().env =="eloqua" && this.instanceService.getActiveTabdata()=="email" ){
+        //alert('email eloqua');
+        this.httpService.get('/eloquaEmail').subscribe(
+          data => {
+            this.isVisible=false;
+            this.router.navigateByUrl('/summary');
+          },
+          (err: HttpErrorResponse) => {
+          console.log (err.message);
+          }
+          ); 
+      }
+      else if(this.instanceService.getserviceDestinationData().env =="sfmc" && this.instanceService.getActiveTabdata()=="email" ){
+        //alert('sfmc email');
+        this.httpService.get('/sfmcEmail').subscribe(
+          
+          data => {
+            this.isVisible=false;
+            this.router.navigateByUrl('/summary');
+          },
+          (err: HttpErrorResponse) => {
+          console.log (err.message);
+          }
+          ); 
+      }
+      else{
+        //alert('landing page email');
+        this.httpService.get('/eloquaLandingPage').subscribe(
+          data => {
+            this.isVisible=false;
+            this.router.navigateByUrl('/summary');
+          },
+          (err: HttpErrorResponse) => {
+          console.log (err.message);
+          }
+          ); 
+      }
 }
