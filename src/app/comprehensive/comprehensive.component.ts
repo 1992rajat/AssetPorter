@@ -18,6 +18,7 @@ export class ComprehensiveComponent implements OnInit {
   downloadpath="./assets/files/Email Details.xlsx";
   sfmcEmails=false;
   eloquaEmails=true;
+  chosenFile:File;
   constructor(private httpService: HttpClient,private router: Router,public instanceService: InstanceService) { }
  
 
@@ -50,15 +51,56 @@ export class ComprehensiveComponent implements OnInit {
   chooseFile(){
         document.getElementById("button-click").click();
         } 
-  showSpinner(){
-    this.isVisible=true;
-    
+  
+        saveFile(event :Event){
+          this.chosenFile=(<HTMLInputElement>event.target).files[0];
+        }
+        submitFile() {
+          alert("hi");
+          const uploadForm = new FormData();
+          uploadForm.append("file", this.chosenFile);
+          uploadForm.append("asset-type", this.activeTab);
+          uploadForm.append("src", this.instanceService.getserviceSourceData());
+          uploadForm.append("dest", this.instanceService.getserviceDestinationData());
+         
+          this.httpService.post("/uploadFile", uploadForm).subscribe(
+            data => {
+              alert("2");
+              //this.isVisible = false;
+             // this.router.navigateByUrl('/summary');
+             this.callPythonScript();
+
+            },
+            (err: HttpErrorResponse) => {
+              alert("3");
+              console.log('error')
+              console.log(err.message);
+            }
+          );
+        }
+          showSpinner(){
+            this.isVisible=true;
+            this.submitFile();
+            // setTimeout(function() {
+             
+            // var clickedtab=this.activeTab
+            // console.log(clickedtab);
+            // this.router.navigateByUrl('/summary');
+            // }, 6000);
+           
+         
+            }
+
+
+
+
+  callPythonScript(){
     var clickedTab=this.activeTab
       console.log(clickedTab);
       this.instanceService.setActiveTabData(clickedTab);
       if(this.instanceService.getserviceDestinationData().env =="eloqua" && this.instanceService.getActiveTabdata()=="email" ){
         //alert('email eloqua');
-        this.httpService.get('http://localhost:3010/eloquaEmail').subscribe(
+        this.httpService.get('/eloquaEmail').subscribe(
           data => {
             this.isVisible=false;
             this.router.navigateByUrl('/summary');
@@ -70,7 +112,7 @@ export class ComprehensiveComponent implements OnInit {
       }
       else if(this.instanceService.getserviceDestinationData().env =="sfmc" && this.instanceService.getActiveTabdata()=="email" ){
         //alert('sfmc email');
-        this.httpService.get('http://localhost:3010/sfmcEmail').subscribe(
+        this.httpService.get('/sfmcEmail').subscribe(
           
           data => {
             this.isVisible=false;
@@ -83,7 +125,7 @@ export class ComprehensiveComponent implements OnInit {
       }
       else{
         //alert('landing page email');
-        this.httpService.get('http://localhost:3010/eloquaLandingPage').subscribe(
+        this.httpService.get('/eloquaLandingPage').subscribe(
           data => {
             this.isVisible=false;
             this.router.navigateByUrl('/summary');
